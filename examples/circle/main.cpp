@@ -180,7 +180,7 @@ void driveRot()
 {
     while( com.isConnected() && false == bumper.value() && _run )
     {
-        omniDrive.setVelocity(0.0f, 0.0f, -atan2(0.0, -2.0));
+        omniDrive.setVelocity(0.0f, 0.0f, -0.01);
 
         com.processEvents();
         rec::robotino::api2::msleep( 100 );
@@ -189,9 +189,9 @@ void driveRot()
 
 void drivePID() {
 	float waypoints[2] = {0.0, 3.0};
-	float kp = 0.2f;
-	float ki = 0.1f;
-	float kd = 0.1f;
+	float kp = 0.01f;
+	float ki = 0.01f;
+	float kd = 0.005f;
 	float dt = 0.1f;
 
 	PID pid_linear(kp, ki, kd, dt); // 前进方向的PID控制器

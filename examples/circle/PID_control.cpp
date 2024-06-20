@@ -25,7 +25,7 @@ void State::update(float vx, float vy, float omega, float dt) {
         this->y += vy * dt * sinf(ntheta_rad);
     }
     this->theta += omega * dt;
-    std::cout << "x: " << this->x << " y: " << this->y << std::endl;
+    std::cout << "x: " << this->x << " y: " << this->y << " vel: " << vy << std::endl;
 }
 
 void State::getCurState(float &x, float &y, float &theta) {
