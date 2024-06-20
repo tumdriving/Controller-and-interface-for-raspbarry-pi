@@ -1,0 +1,3 @@
+/home/pi/examples/circle/build/CMakeFiles/rebuild_cache.dir
+/home/pi/examples/circle/build/CMakeFiles/example_circle.dir
+/home/pi/examples/circle/build/CMakeFiles/edit_cache.dir

@@ -1,0 +1,40 @@
+cmake_minimum_required(VERSION 2.6)
+
+SET(
+	NAME
+	example_circle
+)
+
+PROJECT( ${NAME} )
+
+IF( WIN32 )
+	SET( ROBOTINOAPI2_DIR "$ENV{ProgramFiles}/REC GmbH/robotino/api2")
+ELSE( WIN32 )
+	SET( ROBOTINOAPI2_DIR "/opt/robotino" )
+ENDIF( WIN32 )
+
+SET( CMAKE_MODULE_PATH ${ROBOTINOAPI2_DIR}/cmake )
+
+find_package( RobotinoAPI2 REQUIRED )
+
+COPY_ROBOTINOAPI2_DLLS( "${CMAKE_CURRENT_BINARY_DIR}" "${CMAKE_CURRENT_BINARY_DIR}" )
+
+INCLUDE_DIRECTORIES(
+	$(CMAKE_CURRENT_SOURCE_DIR)
+)
+
+# FILE( GLOB SRCS *.cpp )
+# FILE( GLOB HEADER *.h )
+
+ADD_EXECUTABLE(
+	${NAME}
+	main.cpp
+	PID_control.cpp
+)
+
+TARGET_LINK_LIBRARIES(
+	${NAME}
+	${REC_ROBOTINO_API2_LIBRARY}
+)
+
+SOURCE_GROUP( "Source Files" FILES main.cpp PID_control.cpp PID_control.h )
